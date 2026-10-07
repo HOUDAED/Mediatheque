@@ -34,4 +34,3 @@ GRANT UPDATE (disponible) ON mediatheque.exemplaire TO role_prets;
 GRANT SELECT ON mediatheque.adherent TO role_adherents;
 GRANT INSERT ON mediatheque.adherent TO role_adherents;
 GRANT UPDATE ON mediatheque.adherent TO role_adherents;
-
