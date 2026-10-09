@@ -69,6 +69,8 @@ Dans les deux cas, c'est un privilège de niveau colonne.
 
 Enfin : un rôle accordé n'est pas un rôle actif. Ajoutez la ligne qui rend les rôles actifs **à chaque connexion** des comptes concernés — pas seulement pour la session en cours.
 
+**Avec MariaDB**, un seul rôle peut être défini par défaut et la syntaxe est `SET DEFAULT ROLE role FOR 'compte'@'localhost'`. Le script active donc le rôle principal de chaque compte avec cette syntaxe et accorde directement à `app_media` et `biblio_marie` les droits complémentaires nécessaires à leurs autres missions. MySQL 8 utilise une syntaxe différente pour `SET DEFAULT ROLE`.
+
 **3. Relire les droits, puis en retirer un**
 
 Deux requêtes dont la sortie doit figurer dans votre rendu : `SHOW GRANTS` pour chacun des quatre comptes, puis les privilèges de niveau colonne de la base, lus dans `information_schema.column_privileges`.
