@@ -91,3 +91,4 @@ Aucune ligne n'ouvre `email`, `telephone` ni `date_naissance` au stagiaire ou à
 > On le lui retire en remplaçant l'`UPDATE` de table par des `UPDATE` de colonne dans le rôle :
 > `REVOKE UPDATE ON mediatheque.penalite FROM role_prets;` puis
 > `GRANT UPDATE (payee) ON mediatheque.penalite TO role_prets;` — et de même pour les deux autres tables.
+
