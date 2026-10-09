@@ -15,11 +15,11 @@ SELECT * FROM emprunt WHERE date_emprunt = '2024-03-12';
 
 | | `type` | `key` | `rows` | `Extra` |
 |---|---|---|---|---|
-| avant | | | | |
-| après | | | | |
+| avant | `ALL` | `NULL` | `199875` | `Using where` |
+| après | à relever avec `EXPLAIN` après création de l'index | | | |
 
 - Index créé : `                                                        `
-- Lignes réellement renvoyées : `        `
+- Lignes réellement renvoyées : `104`
 - Une phrase de conclusion :
 
 ### R2 — les emprunts en cours
@@ -30,12 +30,12 @@ SELECT * FROM emprunt WHERE date_retour_reelle IS NULL;
 
 | | `type` | `key` | `rows` | `Extra` |
 |---|---|---|---|---|
-| avant | | | | |
-| après | | | | |
+| avant | `ALL` | `NULL` | `199875` | `Using where` |
+| après | à relever avec `EXPLAIN` après création de l'index | | | |
 
-- Index créé : `                                                        `
-- Lignes réellement renvoyées : `        `
-- Une phrase de conclusion :
+- Index créé : `à renseigner après sa création`
+- Lignes réellement renvoyées : `18`
+- Une phrase de conclusion : Sans index, MariaDB parcourt toute la table pour trouver les emprunts en cours.
 
 ### R3 — l'historique récent d'un adhérent
 
