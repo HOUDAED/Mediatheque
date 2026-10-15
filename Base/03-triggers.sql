@@ -76,24 +76,29 @@ BEGIN
     UPDATE exemplaire
        SET disponible = 1
      WHERE id = NEW.exemplaire_id;
-
-    INSERT INTO journal_action (
-      table_cible,
-      operation,
-      cle,
-      auteur,
-      horodatage,
-      details
-    )
-    VALUES (
-      'emprunt',
-      'UPDATE',
-      CAST(NEW.id AS CHAR),
-      USER(),
-      NOW(),
-      CONCAT('Retour enregistré pour exemplaire_id=', NEW.exemplaire_id)
-    );
   END IF;
+
+  INSERT INTO journal_action (
+    table_cible,
+    operation,
+    cle,
+    auteur,
+    horodatage,
+    details
+  )
+  VALUES (
+    'emprunt',
+    'UPDATE',
+    CAST(NEW.id AS CHAR),
+    USER(),
+    NOW(),
+    CONCAT(
+      'date_retour_reelle: ',
+      COALESCE(CAST(OLD.date_retour_reelle AS CHAR), 'NULL'),
+      ' -> ',
+      COALESCE(CAST(NEW.date_retour_reelle AS CHAR), 'NULL')
+    )
+  );
 END$$
 
 DELIMITER ;

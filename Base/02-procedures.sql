@@ -192,8 +192,10 @@ BEGIN
    ORDER BY em.date_emprunt, em.id;
 
   SELECT COUNT(*) AS nombre_total_emprunts
-    FROM emprunt
-   WHERE adherent_id = p_adherent_id;
+    FROM emprunt AS em
+    JOIN adherent AS a ON a.id = em.adherent_id
+   WHERE em.adherent_id = p_adherent_id
+     AND em.date_emprunt >= a.date_inscription;
 END$$
 
 DELIMITER ;
